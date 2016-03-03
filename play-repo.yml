@@ -1,0 +1,4 @@
+---
+- hosts: lab
+  roles:
+    - { role: repo-client, repo_url: http://10.1.1.21/, repo_id: "lab_repo", repo_pretty_name: "Lab repository" }
