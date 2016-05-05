@@ -1,0 +1,15 @@
+---
+username: admin
+password: admin
+auth_pass: admin
+
+ospf:
+  process: 1
+  areas:
+    - id: 0
+      ifaces:
+        - gi1
+        - gi2
+        - gi3
+  passive_ifaces:
+    - gi3

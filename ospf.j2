@@ -1,0 +1,13 @@
+router ospf {{ospf.process}}
+{% for i in ospf.passive_ifaces %}
+ passive-interface {{i}}
+{% endfor %}
+ exit
+
+{% for area in ospf.areas %}
+    {% for iface in area.ifaces %}
+interface {{iface}}
+ ip ospf {{ospf.process}} area {{area.id}}
+ exit
+    {% endfor %}
+{% endfor %}

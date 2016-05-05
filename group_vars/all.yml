@@ -1,0 +1,3 @@
+domain: ag.lab
+dns-server: 10.0.0.200
+time-server: 10.0.0.1

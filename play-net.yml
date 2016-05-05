@@ -1,0 +1,38 @@
+---
+- hosts: net
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: set provider
+      set_fact:
+        login:
+          host: "{{inventory_hostname}}"
+          username: "{{username}}"
+          password: "{{password}}"
+          auth_pass: "{{auth_pass}}"
+
+    - name: configure interfaces
+      ios_template:
+        provider: "{{login}}"
+        authorize: true
+        src: ifaces.j2
+
+    - name: configure ospf
+      ios_template:
+        provider: "{{login}}"
+        authorize: true
+        force: true
+        src: ospf.j2
+      register: check
+
+    - debug: var=check
+
+    - name: check ospf adjacency
+      ios_command:
+        provider: "{{login}}"
+        commands:
+          - show ip ospf neighbor
+      register: ospf_neighbors
+
+    - debug: var=ospf_neighbors.stdout_lines
+

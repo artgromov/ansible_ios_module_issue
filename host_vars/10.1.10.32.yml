@@ -1,0 +1,17 @@
+---
+interfaces:
+  - name: loopback0
+    ip_address: 10.0.0.2
+    netmask: 255.255.255.255
+
+  - name: gi1
+    ip_address: 10.1.2.1
+    netmask: 255.255.255.0
+
+  - name: gi2
+    ip_address: 10.1.12.2
+    netmask: 255.255.255.0
+
+  - name: gi3
+    ip_address: 10.1.23.2
+    netmask: 255.255.255.0
